@@ -1,0 +1,21 @@
+import { Link } from 'react-router-dom';
+
+const ItemsList = () => {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+ 
+    fetchItems().then((data) => setItems(data));
+  }, []);
+
+  return (
+    <div>
+      <h1>Items List</h1>
+      {items.map((item) => (
+        <div key={item.id}>
+          <Link to={`/details/${item.id}`}>{item.name}</Link>
+        </div>
+      ))}
+    </div>
+  );
+};
